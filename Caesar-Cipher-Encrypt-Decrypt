@@ -1,0 +1,42 @@
+###Encryption of Text in accordance with the algorithm:
+
+import string
+x = string.ascii_uppercase
+user_shift_input = int(input('Enter the number of positional shifts that you want: '))
+key = x[(len(x)-user_shift_input):] + x[:(len(x)-user_shift_input)]
+# print(key)
+
+user_input = input('Enter the message that you want to encrypt: ').upper()
+# print(user_input)
+
+my_str = ''
+
+for i in user_input:
+    if i == ' ':
+        my_str = my_str + i
+        continue
+    index_1 = x.index(i)
+    my_str = my_str + key[index_1]
+    
+print(f'The encryped message is: {my_str}')
+
+### Decyption of Text in accordance with the algorithm:
+
+import string
+a = key
+d_user_input = input('Enter the message that you want to decrypt: ').upper()
+d_shift = int(input('Enter the number of positional shift that were entered during encryption: '))
+y = x[:(len(x)-d_shift)] + x[(len(x)-d_shift):]
+# print(a)
+# print(y)
+
+d_my_str = ''
+
+for i in d_user_input:
+    if i == ' ':
+        d_my_str = d_my_str + i
+        continue
+    d_index_1 = a.index(i)
+    d_my_str = d_my_str + y[d_index_1]
+    
+print(f'The decryped message is: {d_my_str}')
